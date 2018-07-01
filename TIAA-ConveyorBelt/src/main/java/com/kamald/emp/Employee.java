@@ -1,10 +1,7 @@
 package com.kamald.emp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 import com.kamald.warehouse.Item;
 
@@ -41,14 +38,14 @@ public class Employee implements Runnable{
 					belt.add(item);
 				} else {
 					noOfMachine++;
-					System.out.println( item + "picked by" + this.name);
+					System.out.println( item + "picked by " + this.name);
 				}
 			} else if("BOLT".equalsIgnoreCase(item.getType())) {
-				if(noOfMachine == 2) {
+				if(noOfBolt == 2) {
 					belt.add(item);
 				} else {
-					noOfMachine++;
-					System.out.println(item + " picked by" + this.name);
+					noOfBolt++;
+					System.out.println(item + " picked by " + this.name);
 				}
 			}
 			
@@ -56,7 +53,8 @@ public class Employee implements Runnable{
 			if( noOfBolt == 2 && noOfMachine == 1) {
 				try {
 					this.setStatus(Status.WORKING);
-					Thread.sleep(60);
+					//Thread.sleep(60);
+					TimeUnit.SECONDS.sleep(60);
 					this.setStatus(Status.COMPLETED);
 					System.out.println("Product completed by "+ this.name);
 				} catch (InterruptedException e) {

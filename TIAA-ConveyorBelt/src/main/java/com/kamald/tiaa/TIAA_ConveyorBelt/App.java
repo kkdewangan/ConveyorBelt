@@ -1,14 +1,23 @@
+package com.kamald.tiaa.TIAA_ConveyorBelt;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import com.kamald.emp.Employee;
 import com.kamald.warehouse.Bolt;
 import com.kamald.warehouse.Item;
 import com.kamald.warehouse.Machine;
 
-public class TestConveyor {
-
-	public static void main(String[] args) {
+/**
+ * Conveyor Belt test
+ *
+ */
+public class App 
+{
+	public static void main(String[] args) throws InterruptedException {
 		BlockingQueue<Item> belt = new ArrayBlockingQueue<>(10);
 		
 		//initialize belt
@@ -21,9 +30,20 @@ public class TestConveyor {
 		
 		
 		//start thread
-		new Thread(A).start();
+		/*new Thread(A).start();
 		new Thread(B).start();
-		new Thread(C).start();
+		new Thread(C).start();*/
+		long start = System.nanoTime();
+		ExecutorService executor = Executors.newFixedThreadPool(3);
+		executor.execute(A);
+		executor.execute(B);
+		executor.execute(C);
+		
+		executor.shutdown();
+		executor.awaitTermination(1, TimeUnit.HOURS); // or longer.    
+		long time = System.nanoTime() - start;
+		System.out.printf("Tasks took %.3f ms to run%n", time/1e6);
+		
 	}
 
 	private static void initialize(BlockingQueue<Item> belt) {
@@ -37,5 +57,4 @@ public class TestConveyor {
 		belt.add(new Bolt(6));
 		belt.add(new Machine(3));
 	}
-
 }
