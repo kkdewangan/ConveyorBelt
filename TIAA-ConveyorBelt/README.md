@@ -10,9 +10,12 @@ Section 3
 a) Sonar lint / EclEmma scan Snapshot
 b) Final Output Snapshot
 c) Junit Coverage Snapshot
-Note: (You can link directly to the raw version of an image from your image folder. Hence from section
-1.1 if your GIT Link is : https://github.com/nescafe2018/intrvw_sq , then you can have the following
-text in your readme ![SonarLint] (https://github.com/nescafe2018/intrvw_sq/&lt;Link of you image) )
+
+***
+- Output screenshot attached
+- not sure how to do unit of multithreading program and so Sonar & Code coverage is missing
+
+
 
 Section 4
 Licensing
@@ -21,3 +24,6 @@ b) THE CODE IS NOT GOVERNED BY ANY LICENSES WHATSOEVER.
 c) THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
 PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR USERS OF
+
+-
+No licensing issue, its public and free
